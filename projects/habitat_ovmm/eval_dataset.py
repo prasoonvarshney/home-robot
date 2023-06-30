@@ -35,6 +35,10 @@ from home_robot.agent.ovmm_agent.ovmm_agent import OpenVocabManipAgent
 from home_robot_sim.env.habitat_ovmm_env.habitat_ovmm_env import (
     HabitatOpenVocabManipEnv,
 )
+from habitat.utils.visualizations.utils import (
+    append_text_to_image,
+    images_to_video,
+)
 
 
 def create_ovmm_env_fn(config):

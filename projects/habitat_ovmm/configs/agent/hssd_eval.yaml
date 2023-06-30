@@ -79,9 +79,9 @@ AGENT:
       type: oracle
 
     NAV_TO_OBJ:
-      type: heuristic # heuristic (default) or rl
+      type: rl # heuristic (default) or rl
       checkpoint_path: data/checkpoints/ovmm_baseline_home_robot_challenge_2023/nav_to_obj.pth
-      rl_config: projects/habitat_ovmm/configs/agent/nav_to_obj_rl.yaml
+      rl_config: projects/habitat_ovmm/configs/agent/nav_to_obj_rl_oracle.yaml
       gym_obs_keys:
         - robot_head_depth
         - object_embedding
@@ -109,9 +109,9 @@ AGENT:
       nav_goal_seg_channels: 2
 
     NAV_TO_REC:
-      type: heuristic # heuristic (default) or rl
+      type: rl # heuristic (default) or rl
       checkpoint_path: data/checkpoints/ovmm_baseline_home_robot_challenge_2023/nav_to_rec.pth
-      rl_config: projects/habitat_ovmm/configs/agent/nav_to_obj_rl.yaml
+      rl_config: projects/habitat_ovmm/configs/agent/nav_to_obj_rl_oracle.yaml
       gym_obs_keys:
         - robot_head_depth
         - ovmm_nav_goal_segmentation
@@ -156,7 +156,7 @@ AGENT:
       arm_joint_mask: [1, 1, 1, 1, 1, 0, 0] # the arm joints that the policy can control
       max_displacement: 0.25                     # used when training the policy
       max_turn_degrees: 30.0
-      min_turn_degrees: 5.0
+      min_turn_degrees: 1.0
       min_displacement: 0.1
       sensor_height: 160
       sensor_width: 120
@@ -192,6 +192,6 @@ EVAL_VECTORIZED:
   simulator_gpu_ids: [1, 2, 3, 4, 5, 6, 7] # IDs of GPUs to use for vectorized environments
   split: val                # eval split
   num_episodes_per_env: null # number of eval episodes per environment
-  record_videos: 0          # 1: record videos from printed images, 0: don't
-  record_planner_videos: 0  # 1: record planner videos (if record videos), 0: don't
+  record_videos: 1          # 1: record videos from printed images, 0: don't
+  record_planner_videos: 1  # 1: record planner videos (if record videos), 0: don't
   metrics_save_freq: 5      # save metrics after every n episodes
