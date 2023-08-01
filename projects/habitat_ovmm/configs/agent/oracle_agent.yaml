@@ -59,7 +59,7 @@ SKILLS:
     type: heuristic
 
   NAV_TO_OBJ:
-    type: heuristic # heuristic (default) or rl
+    type: oracle  # heuristic (default) or rl
     checkpoint_path: data/checkpoints/ovmm_baseline_home_robot_challenge_2023/nav_to_obj.pth
     rl_config: projects/habitat_ovmm/configs/agent/skills/nav_to_obj_rl.yaml
     gym_obs_keys:
@@ -89,7 +89,7 @@ SKILLS:
     nav_goal_seg_channels: 2
 
   NAV_TO_REC:
-    type: heuristic # heuristic (default) or rl
+    type: oracle  # heuristic (default) or rl
     checkpoint_path: data/checkpoints/ovmm_baseline_home_robot_challenge_2023/nav_to_rec.pth
     rl_config: projects/habitat_ovmm/configs/agent/skills/nav_to_obj_rl.yaml
     gym_obs_keys:
@@ -166,4 +166,4 @@ PLANNER:
   map_downsample_factor: 1            # optional downsampling of traversible and goal map before fmm distance call (1 for no downsampling, 2 for halving resolution)
   map_update_frequency: 1             # compute fmm distance map every n steps 
   discrete_actions: True         # discrete motion planner output space or not
-  verbose: False                 # display debug information during planning
+  verbose: True                  # display debug information during planning

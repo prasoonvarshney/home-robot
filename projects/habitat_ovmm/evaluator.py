@@ -238,7 +238,11 @@ class OVMMEvaluator(PPOTrainer):
         :param num_episodes: count of number of episodes for which the evaluation should be run.
         :return: dict containing metrics tracked by environment.
         """
+        # Entry point to the OVMM evaluation
+        print(agent)
+        import time
 
+        time.sleep(10)
         env_num_episodes = self._env.number_of_episodes
         if num_episodes is None:
             num_episodes = env_num_episodes
@@ -266,6 +270,8 @@ class OVMMEvaluator(PPOTrainer):
                 f"{current_episode.episode_id}"
             )
             current_episode_metrics = {}
+
+            agent.set_oracle_info(self._env)
 
             while not done:
                 action, info, _ = agent.act(observations)

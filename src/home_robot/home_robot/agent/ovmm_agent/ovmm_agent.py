@@ -20,6 +20,9 @@ from home_robot.agent.ovmm_agent.ovmm_perception import (
 from home_robot.core.interfaces import DiscreteNavigationAction, Observations
 from home_robot.manipulation import HeuristicPickPolicy, HeuristicPlacePolicy
 from home_robot.perception.constants import RearrangeBasicCategories
+from home_robot_sim.env.habitat_ovmm_env.habitat_ovmm_env import (
+    HabitatOpenVocabManipEnv,
+)
 
 
 class Skill(IntEnum):
@@ -64,6 +67,8 @@ class OpenVocabManipAgent(ObjectNavAgent):
         self.pick_policy = None
         self.place_policy = None
         self.semantic_sensor = None
+        self.verbose = True
+        self._env = None
 
         if config.GROUND_TRUTH_SEMANTICS == 1 and self.store_all_categories_in_map:
             # currently we get ground truth semantics of only the target object category and all scene receptacles from the simulator
@@ -113,6 +118,16 @@ class OpenVocabManipAgent(ObjectNavAgent):
                 device_id=device_id,
             )
         if (
+            config.AGENT.SKILLS.NAV_TO_OBJ.type == "oracle"
+            and not self.skip_skills.nav_to_obj
+        ):
+            from home_robot.agent.objectnav_agent.oracle_nav_agent import (
+                ShortestPathFollowerAgent,
+            )
+
+            self.nav_to_obj_agent = ShortestPathFollowerAgent()
+
+        if (
             config.AGENT.SKILLS.NAV_TO_REC.type == "rl"
             and not self.skip_skills.nav_to_rec
         ):
@@ -123,8 +138,43 @@ class OpenVocabManipAgent(ObjectNavAgent):
                 config.AGENT.SKILLS.NAV_TO_REC,
                 device_id=device_id,
             )
+        if (
+            config.AGENT.SKILLS.NAV_TO_REC.type == "oracle"
+            and not self.skip_skills.nav_to_rec
+        ):
+            from home_robot.agent.objectnav_agent.oracle_nav_agent import (
+                ShortestPathFollowerAgent,
+            )
+
+            self.nav_to_rec_agent = ShortestPathFollowerAgent()
+
         self._fall_wait_steps = getattr(config.AGENT, "fall_wait_steps", 0)
         self.config = config
+
+    def set_oracle_info(self, ovmm_env: HabitatOpenVocabManipEnv):
+        """
+        print(f"Current env: {ovmm_env}")  # HabitatOpenVocabManipEnv
+        print(f"Current env: {ovmm_env.habitat_env}")  # <GymHabitatEnv<HabGymWrapper instance>>
+        print(f"Current env: {ovmm_env.habitat_env.env}")  # HabGymWrapper instance>
+        print(f"Current env: {ovmm_env.habitat_env.env._env}")  # <RLTaskEnv instance>
+        print(f"Current env: {ovmm_env.habitat_env.env._env._env}")  # habitat.core.env.Env
+        print(f"Current simulator: {ovmm_env.habitat_env.env._env._env.sim}")  # OVMMSim
+        """
+        self._env = ovmm_env
+        if (
+            self.config.AGENT.SKILLS.NAV_TO_OBJ.type == "oracle"
+            and not self.skip_skills.nav_to_obj
+        ):
+            # Extract the habitat_env from the ovmm env and provide it to the agent
+            print("Providing oracle environment information to NAV_TO_OBJ agent")
+            self.nav_to_obj_agent.set_oracle_info(ovmm_env.habitat_env.env._env)
+        if (
+            self.config.AGENT.SKILLS.NAV_TO_REC.type == "oracle"
+            and not self.skip_skills.nav_to_rec
+        ):
+            # Extract the habitat_env from the ovmm env and provide it to the agent
+            print("Providing oracle environment information to NAV_TO_REC agent")
+            self.nav_to_rec_agent.set_oracle_info(ovmm_env.habitat_env.env._env)
 
     def _get_info(self, obs: Observations) -> Dict[str, torch.Tensor]:
         """Get inputs for visual skill."""
@@ -401,6 +451,11 @@ class OpenVocabManipAgent(ObjectNavAgent):
             action, info, terminate = self._heuristic_nav(obs, info)
         elif nav_to_obj_type == "rl":
             action, info, terminate = self.nav_to_obj_agent.act(obs, info)
+        elif nav_to_obj_type == "oracle":
+            action, terminate = self.nav_to_obj_agent.act(obs, info)
+            print(f"Oracle agent: {action, terminate}")
+            # import time
+            # time.sleep(1)
         else:
             raise ValueError(
                 f"Got unexpected value for NAV_TO_OBJ.type: {nav_to_obj_type}"
@@ -486,6 +541,9 @@ class OpenVocabManipAgent(ObjectNavAgent):
             action, info, terminate = self._heuristic_nav(obs, info)
         elif nav_to_rec_type == "rl":
             action, info, terminate = self.nav_to_rec_agent.act(obs, info)
+        elif nav_to_rec_type == "oracle":
+            action, terminate = self.nav_to_rec_agent.act(obs, info)
+            print(f"Oracle agent: {action, terminate}")
         else:
             raise ValueError(
                 f"Got unexpected value for NAV_TO_REC.type: {nav_to_rec_type}"
