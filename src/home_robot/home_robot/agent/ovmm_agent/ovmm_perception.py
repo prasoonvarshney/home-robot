@@ -9,10 +9,6 @@ from typing import Dict, Tuple
 
 from home_robot.core.interfaces import Observations
 from home_robot.perception.constants import RearrangeDETICCategories
-from home_robot.perception.detection.detic.detic_perception import DeticPerception
-from home_robot.perception.detection.grounded_sam.grounded_sam_perception import (
-    GroundedSAMPerception,
-)
 
 
 def read_category_map_file(
@@ -76,7 +72,12 @@ class OvmmPerception:
         self._current_vocabulary_id: int = None
         self.verbose = verbose
         if self._detection_module == "detic":
+            # don't break if not using Detic and relevant dependencies not installed
             # TODO Specify confidence threshold as a parameter
+            from home_robot.perception.detection.detic.detic_perception import (
+                DeticPerception,
+            )
+
             self._segmentation = DeticPerception(
                 vocabulary="custom",
                 custom_vocabulary=".",
@@ -84,6 +85,11 @@ class OvmmPerception:
                 verbose=verbose,
             )
         elif self._detection_module == "grounded_sam":
+            # don't break if not using grounded SAM and relevant dependencies not installed
+            from home_robot.perception.detection.grounded_sam.grounded_sam_perception import (
+                GroundedSAMPerception,
+            )
+
             self._segmentation = GroundedSAMPerception(
                 custom_vocabulary=".",
                 sem_gpu_id=gpu_device_id,
