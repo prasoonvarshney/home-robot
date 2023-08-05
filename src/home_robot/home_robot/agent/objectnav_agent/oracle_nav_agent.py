@@ -59,7 +59,7 @@ class ShortestPathFollowerAgent(Agent):
         self.env = env
         self.shortest_path_follower = ShortestPathFollower(
             sim=env.habitat_env.sim,
-            goal_radius=0.05,
+            goal_radius=0.05,  # TODO: should come from a config
             return_one_hot=False,
         )
         if goal_type == "NAV_TO_REC":

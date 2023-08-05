@@ -8,8 +8,7 @@ import argparse
 import os
 import shutil
 
-import habitat
-import numpy as np
+import magnum as mn
 from habitat.core.utils import try_cv2_import
 from habitat.tasks.nav.shortest_path_follower import ShortestPathFollower
 from habitat.utils.visualizations import maps
@@ -93,55 +92,76 @@ def shortest_path_example(config):
         ovmm_env.habitat_env.env._env.habitat_env.sim, goal_radius, False
     )
 
-    print("Environment creation successful")
     for _ in range(ovmm_env.number_of_episodes):
         ovmm_env.reset()
+        episode_id = ovmm_env.get_current_episode().episode_id
         dirname = os.path.join(
             IMAGE_DIR,
             "shortest_path_example_ovmm",
-            f"{ovmm_env.get_current_episode().episode_id}",
+            f"{episode_id}",
         )
-        if os.path.exists(dirname):
-            shutil.rmtree(dirname)
-        os.makedirs(dirname)
-        print("Agent stepping around inside environment.")
-        images_third_person = []
-        images_instance_map = []
-        images_top_down_map = []
-        steps, max_steps = 0, 1000
-        info = None
-        while (
-            not ovmm_env.habitat_env.env._env.habitat_env.episode_over
-            and steps < max_steps
-        ):
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+        with open(
+            os.path.join(os.getcwd(), dirname, f"logs_ep_{episode_id}.txt"), "w"
+        ) as f:
+            f.write("Environment creation successful\n")
+            f.write("Agent stepping around inside environment.\n")
+            images_third_person = []
+            images_instance_map = []
+            images_top_down_map = []
+            steps, max_steps = 0, 1000
+            info = None
             object_pos = ovmm_env.habitat_env.env._env.habitat_env.current_episode.candidate_goal_receps[
                 0
             ].position
-            best_action = DISCRETE_ACTION_MAP[follower.get_next_action(object_pos)]
-            print(f"Agent action: {best_action}")
-            if best_action is None:
-                break
-
-            observations, done, info = ovmm_env.apply_action(best_action, info)
-            steps += 1
-            info["timestep"] = steps
-            third_person_image = observations.third_person_image
-            instance_map = observations.task_observations["instance_map"]
-
-            # top_down_map = draw_top_down_map(info, im1.shape[0])
-            print(
-                f"OVMM observations GPS: {observations.gps} Compass: {observations.compass}"
+            goal = (
+                ovmm_env.habitat_env.env._env.habitat_env.current_episode.start_position
             )
-            print(f"OVMM distance to pick goal: {info['ovmm_dist_to_pick_goal']}")
-            print(f"OVMM distance to place goal: {info['ovmm_dist_to_place_goal']}")
-            # output_im = np.concatenate((im1, im2, info["top_down_map.map"]), axis=1)
-            images_third_person.append(third_person_image)
-            images_instance_map.append(instance_map)
-            # images_top_down_map.append(info["top_down_map.map"])
-        images_to_video(images_third_person, dirname, "trajectory_third_person")
-        images_to_video(images_instance_map, dirname, "trajectory_instance_map")
-        # images_to_video(images_top_down_map, dirname, "trajectory_top_down_map")
-        print("Episode finished")
+            goal[0] = (
+                ovmm_env.habitat_env.env._env.habitat_env.current_episode.start_position[
+                    0
+                ]
+                + 1
+            )
+            while (
+                not ovmm_env.habitat_env.env._env.habitat_env.episode_over
+                and steps < max_steps
+            ):
+                if steps != 0:
+                    #     print(f"OVMM observations GPS: {observations.gps} Compass: {observations.compass}")
+                    f.write(
+                        f"info['ovmm_dist_to_pick_goal']:\t{info['ovmm_dist_to_pick_goal']}\n"
+                    )
+                #     print(f"OVMM distance to place goal: {info['ovmm_dist_to_place_goal']}")
+
+                f.write(f"\nTimestep: {steps}\n")
+                print(f"Timestep: {steps}")
+                best_action = DISCRETE_ACTION_MAP[
+                    follower.get_next_action(mn.Vector3(goal), f)
+                ]
+                f.write(f"Agent action: {best_action}\n")
+                if best_action is None:
+                    break
+
+                observations, done, info = ovmm_env.apply_action(best_action, info)
+                steps += 1
+                info["timestep"] = steps
+                third_person_image = observations.third_person_image
+                instance_map = observations.task_observations["instance_map"]
+
+                # top_down_map = draw_top_down_map(info, im1.shape[0])
+                # output_im = np.concatenate((im1, im2, info["top_down_map.map"]), axis=1)
+                images_third_person.append(third_person_image)
+                images_instance_map.append(instance_map)
+                # images_top_down_map.append(info["top_down_map.map"])
+            images_to_video(images_third_person, dirname, "trajectory_third_person")
+            images_to_video(images_instance_map, dirname, "trajectory_instance_map")
+            # images_to_video(images_top_down_map, dirname, "trajectory_top_down_map")
+            if steps >= max_steps:
+                f.write("Max steps reached! Aborting episode...")
+            else:
+                f.write("Episode finished succesfully")
 
 
 if __name__ == "__main__":
@@ -162,7 +182,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--baseline_config_path",
         type=str,
-        default="projects/habitat_ovmm/configs/agent/heuristic_agent.yaml",
+        default="projects/habitat_ovmm/configs/agent/oracle_agent.yaml",
         help="Path to config yaml",
     )
     parser.add_argument(

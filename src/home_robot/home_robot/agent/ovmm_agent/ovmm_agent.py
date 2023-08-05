@@ -12,6 +12,7 @@ import numpy as np
 import torch
 
 from home_robot.agent.objectnav_agent.objectnav_agent import ObjectNavAgent
+from home_robot.agent.objectnav_agent.oracle_nav_agent import ShortestPathFollowerAgent
 from home_robot.agent.ovmm_agent.ovmm_perception import (
     OvmmPerception,
     build_vocab_from_category_map,
@@ -67,7 +68,7 @@ class OpenVocabManipAgent(ObjectNavAgent):
         self.pick_policy = None
         self.place_policy = None
         self.semantic_sensor = None
-        self.verbose = True
+        # self.verbose = True
         self._env = None
 
         if config.GROUND_TRUTH_SEMANTICS == 1 and self.store_all_categories_in_map:
@@ -121,10 +122,6 @@ class OpenVocabManipAgent(ObjectNavAgent):
             config.AGENT.SKILLS.NAV_TO_OBJ.type == "oracle"
             and not self.skip_skills.nav_to_obj
         ):
-            from home_robot.agent.objectnav_agent.oracle_nav_agent import (
-                ShortestPathFollowerAgent,
-            )
-
             self.nav_to_obj_agent = ShortestPathFollowerAgent()
 
         if (
@@ -142,10 +139,6 @@ class OpenVocabManipAgent(ObjectNavAgent):
             config.AGENT.SKILLS.NAV_TO_REC.type == "oracle"
             and not self.skip_skills.nav_to_rec
         ):
-            from home_robot.agent.objectnav_agent.oracle_nav_agent import (
-                ShortestPathFollowerAgent,
-            )
-
             self.nav_to_rec_agent = ShortestPathFollowerAgent()
 
         self._fall_wait_steps = getattr(config.AGENT, "fall_wait_steps", 0)
@@ -167,14 +160,18 @@ class OpenVocabManipAgent(ObjectNavAgent):
         ):
             # Extract the habitat_env from the ovmm env and provide it to the agent
             print("Providing oracle environment information to NAV_TO_OBJ agent")
-            self.nav_to_obj_agent.set_oracle_info(ovmm_env.habitat_env.env._env)
+            self.nav_to_obj_agent.set_oracle_info(
+                ovmm_env.habitat_env.env._env, goal_type="NAV_TO_OBJ"
+            )
         if (
             self.config.AGENT.SKILLS.NAV_TO_REC.type == "oracle"
             and not self.skip_skills.nav_to_rec
         ):
             # Extract the habitat_env from the ovmm env and provide it to the agent
             print("Providing oracle environment information to NAV_TO_REC agent")
-            self.nav_to_rec_agent.set_oracle_info(ovmm_env.habitat_env.env._env)
+            self.nav_to_rec_agent.set_oracle_info(
+                ovmm_env.habitat_env.env._env, goal_type="NAV_TO_REC"
+            )
 
     def _get_info(self, obs: Observations) -> Dict[str, torch.Tensor]:
         """Get inputs for visual skill."""
@@ -453,13 +450,19 @@ class OpenVocabManipAgent(ObjectNavAgent):
             action, info, terminate = self.nav_to_obj_agent.act(obs, info)
         elif nav_to_obj_type == "oracle":
             action, terminate = self.nav_to_obj_agent.act(obs, info)
-            print(f"Oracle agent: {action, terminate}")
-            # import time
-            # time.sleep(1)
+            # self.timesteps[0] += 1
+            # info["timestep"] = self.timesteps[0]
+
         else:
             raise ValueError(
                 f"Got unexpected value for NAV_TO_OBJ.type: {nav_to_obj_type}"
             )
+
+        print(f"Agent action: {action, terminate}")
+        print(f"Current pose: {self.last_poses[0]}")
+        # import time
+        # time.sleep(1)
+
         new_state = None
         if terminate:
             action = None
