@@ -1,0 +1,723 @@
+Environment creation successful
+Agent stepping around inside environment.
+
+Timestep: 0
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.999571, 0}, 0.0292885)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 1
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.997342, 0}, 0.0728613)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 2
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.993215, 0}, 0.116295)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 3
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.987197, 0}, 0.159508)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 4
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.979299, 0}, 0.202417)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 5
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.969538, 0}, 0.24494)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 6
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.957931, 0}, 0.286998)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 7
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.944501, 0}, 0.328509)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 8
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.929273, 0}, 0.369395)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 9
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.912275, 0}, 0.409577)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 10
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.893542, 0}, 0.44898)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 11
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.873107, 0}, 0.487529)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 12
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.85101, 0}, 0.525149)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 13
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.827294, 0}, 0.56177)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 14
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.802002, 0}, 0.597321)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 15
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.775184, 0}, 0.631735)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 16
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.74689, 0}, 0.664947)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 17
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.717175, 0}, 0.696893)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 18
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.686094, 0}, 0.727513)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 19
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.653708, 0}, 0.756747)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 20
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.620077, 0}, 0.784541)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 21
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.585265, 0}, 0.810842)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 22
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.54934, 0}, 0.835599)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 23
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.512368, 0}, 0.858766)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 24
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.474422, 0}, 0.880298)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 25
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.435572, 0}, 0.900154)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 26
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.395894, 0}, 0.918296)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 27
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.355461, 0}, 0.934691)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 28
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.314352, 0}, 0.949306)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.507396697998047
+
+Timestep: 29
+Current position:	Vector(-10.1147, 0.08283, -2.88707), Quaternion({0, -0.272645, 0}, 0.962115)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 2.0126211643218994
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	3.4088962078094482
+
+Timestep: 30
+Current position:	Vector(-10.0622, 0.08283, -2.9722), Quaternion({0, -0.272645, 0}, 0.962115)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.9350095987319946
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.4088962078094482
+
+Timestep: 31
+Current position:	Vector(-10.0622, 0.08283, -2.9722), Quaternion({0, -0.230418, 0}, 0.973092)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.9350095987319946
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.4088962078094482
+
+Timestep: 32
+Current position:	Vector(-10.0622, 0.08283, -2.9722), Quaternion({0, -0.187753, 0}, 0.982216)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.9350095987319946
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.4088962078094482
+
+Timestep: 33
+Current position:	Vector(-10.0622, 0.08283, -2.9722), Quaternion({0, -0.144731, 0}, 0.989471)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.9350095987319946
+Agent action: DiscreteNavigationAction.TURN_LEFT
+info['ovmm_dist_to_pick_goal']:	3.4088962078094482
+
+Timestep: 34
+Current position:	Vector(-10.0622, 0.08283, -2.9722), Quaternion({0, -0.101433, 0}, 0.994842)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.9350095987319946
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	3.3104586601257324
+
+Timestep: 35
+Current position:	Vector(-10.042, 0.08283, -3.07015), Quaternion({0, -0.101433, 0}, 0.994842)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.882248044013977
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	3.3104586601257324
+
+Timestep: 36
+Current position:	Vector(-10.042, 0.08283, -3.07015), Quaternion({0, -0.144731, 0}, 0.989471)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.882248044013977
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	3.2111384868621826
+
+Timestep: 37
+Current position:	Vector(-10.0134, 0.08283, -3.16596), Quaternion({0, -0.144731, 0}, 0.989471)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.8268215656280518
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	3.112215757369995
+
+Timestep: 38
+Current position:	Vector(-9.98475, 0.08283, -3.26177), Quaternion({0, -0.144731, 0}, 0.989471)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.7753016948699951
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	3.112215757369995
+
+Timestep: 39
+Current position:	Vector(-9.98475, 0.08283, -3.26177), Quaternion({0, -0.187753, 0}, 0.982216)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.7753016948699951
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	3.012664556503296
+
+Timestep: 40
+Current position:	Vector(-9.94787, 0.08283, -3.35472), Quaternion({0, -0.187753, 0}, 0.982216)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.7214618921279907
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	2.9137232303619385
+
+Timestep: 41
+Current position:	Vector(-9.91099, 0.08283, -3.44767), Quaternion({0, -0.187753, 0}, 0.982216)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.6718751192092896
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	2.9137232303619385
+
+Timestep: 42
+Current position:	Vector(-9.91099, 0.08283, -3.44767), Quaternion({0, -0.230418, 0}, 0.973092)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.6718751192092896
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	2.81417179107666
+
+Timestep: 43
+Current position:	Vector(-9.86614, 0.08283, -3.53705), Quaternion({0, -0.230418, 0}, 0.973092)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.620361328125
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	2.714747190475464
+
+Timestep: 44
+Current position:	Vector(-9.8213, 0.08283, -3.62643), Quaternion({0, -0.230418, 0}, 0.973092)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.5735232830047607
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	2.6155037879943848
+
+Timestep: 45
+Current position:	Vector(-9.77646, 0.08283, -3.71581), Quaternion({0, -0.230418, 0}, 0.973092)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.531789779663086
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	2.5164854526519775
+
+Timestep: 46
+Current position:	Vector(-9.73161, 0.08283, -3.80519), Quaternion({0, -0.230418, 0}, 0.973092)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.4955883026123047
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	2.4177980422973633
+
+Timestep: 47
+Current position:	Vector(-9.68677, 0.08283, -3.89457), Quaternion({0, -0.230418, 0}, 0.973092)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.4653288125991821
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	2.4177980422973633
+
+Timestep: 48
+Current position:	Vector(-9.68677, 0.08283, -3.89457), Quaternion({0, -0.272644, 0}, 0.962115)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.4653288125991821
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	2.3182647228240967
+
+Timestep: 49
+Current position:	Vector(-9.63431, 0.08283, -3.97971), Quaternion({0, -0.272644, 0}, 0.962115)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.4343122243881226
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	2.2189693450927734
+
+Timestep: 50
+Current position:	Vector(-9.58184, 0.08283, -4.06484), Quaternion({0, -0.272644, 0}, 0.962115)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.4097212553024292
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	2.1201534271240234
+
+Timestep: 51
+Current position:	Vector(-9.52938, 0.08283, -4.14997), Quaternion({0, -0.272644, 0}, 0.962115)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3918967247009277
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	2.1201534271240234
+
+Timestep: 52
+Current position:	Vector(-9.52938, 0.08283, -4.14997), Quaternion({0, -0.314352, 0}, 0.949307)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3918967247009277
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	2.020781993865967
+
+Timestep: 53
+Current position:	Vector(-9.4697, 0.08283, -4.23021), Quaternion({0, -0.314352, 0}, 0.949307)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3739097118377686
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	1.921966552734375
+
+Timestep: 54
+Current position:	Vector(-9.41002, 0.08283, -4.31045), Quaternion({0, -0.314352, 0}, 0.949307)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3630403280258179
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	1.8235764503479004
+
+Timestep: 55
+Current position:	Vector(-9.35033, 0.08283, -4.39068), Quaternion({0, -0.314352, 0}, 0.949307)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.359459400177002
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	1.8235764503479004
+
+Timestep: 56
+Current position:	Vector(-9.35033, 0.08283, -4.39068), Quaternion({0, -0.355461, 0}, 0.934691)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.359459400177002
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	1.7242799997329712
+
+Timestep: 57
+Current position:	Vector(-9.28388, 0.08283, -4.46541), Quaternion({0, -0.355461, 0}, 0.934691)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3560220003128052
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	1.6253693103790283
+
+Timestep: 58
+Current position:	Vector(-9.21743, 0.08283, -4.54014), Quaternion({0, -0.355461, 0}, 0.934691)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3599491119384766
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	1.6253693103790283
+
+Timestep: 59
+Current position:	Vector(-9.21743, 0.08283, -4.54014), Quaternion({0, -0.395893, 0}, 0.918297)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3599491119384766
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	1.5258047580718994
+
+Timestep: 60
+Current position:	Vector(-9.14472, 0.08283, -4.60879), Quaternion({0, -0.395893, 0}, 0.918297)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3640154600143433
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	1.4267663955688477
+
+Timestep: 61
+Current position:	Vector(-9.07202, 0.08283, -4.67745), Quaternion({0, -0.395893, 0}, 0.918297)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3753598928451538
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	1.4267663955688477
+
+Timestep: 62
+Current position:	Vector(-9.07202, 0.08283, -4.67745), Quaternion({0, -0.435572, 0}, 0.900154)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3753598928451538
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	1.3277511596679688
+
+Timestep: 63
+Current position:	Vector(-8.9936, 0.08283, -4.7395), Quaternion({0, -0.435572, 0}, 0.900154)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3867018222808838
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	1.3277511596679688
+
+Timestep: 64
+Current position:	Vector(-8.9936, 0.08283, -4.7395), Quaternion({0, -0.474421, 0}, 0.880298)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3867018222808838
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	1.3277511596679688
+
+Timestep: 65
+Current position:	Vector(-8.9936, 0.08283, -4.7395), Quaternion({0, -0.512368, 0}, 0.858766)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3867018222808838
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	1.23000168800354
+
+Timestep: 66
+Current position:	Vector(-8.9056, 0.08283, -4.787), Quaternion({0, -0.512368, 0}, 0.858766)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3907296657562256
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	1.23000168800354
+
+Timestep: 67
+Current position:	Vector(-8.9056, 0.08283, -4.787), Quaternion({0, -0.549339, 0}, 0.8356)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3907296657562256
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	1.23000168800354
+
+Timestep: 68
+Current position:	Vector(-8.9056, 0.08283, -4.787), Quaternion({0, -0.585264, 0}, 0.810843)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3907296657562256
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	1.1311060190200806
+
+Timestep: 69
+Current position:	Vector(-8.81069, 0.08283, -4.81849), Quaternion({0, -0.585264, 0}, 0.810843)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3873851299285889
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	1.1311060190200806
+
+Timestep: 70
+Current position:	Vector(-8.81069, 0.08283, -4.81849), Quaternion({0, -0.620076, 0}, 0.784542)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3873851299285889
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	1.031592845916748
+
+Timestep: 71
+Current position:	Vector(-8.71339, 0.08283, -4.84159), Quaternion({0, -0.620076, 0}, 0.784542)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3839703798294067
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.9328159689903259
+
+Timestep: 72
+Current position:	Vector(-8.6161, 0.08283, -4.8647), Quaternion({0, -0.620076, 0}, 0.784542)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.387771725654602
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.9328159689903259
+
+Timestep: 73
+Current position:	Vector(-8.6161, 0.08283, -4.8647), Quaternion({0, -0.653707, 0}, 0.756748)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.387771725654602
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.9328159689903259
+
+Timestep: 74
+Current position:	Vector(-8.6161, 0.08283, -4.8647), Quaternion({0, -0.686093, 0}, 0.727513)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.387771725654602
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.8330361247062683
+
+Timestep: 75
+Current position:	Vector(-8.51627, 0.08283, -4.87055), Quaternion({0, -0.686093, 0}, 0.727513)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.384229302406311
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.8330361247062683
+
+Timestep: 76
+Current position:	Vector(-8.51627, 0.08283, -4.87055), Quaternion({0, -0.717174, 0}, 0.696894)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.384229302406311
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.753997266292572
+
+Timestep: 77
+Current position:	Vector(-8.41631, 0.08283, -4.86768), Quaternion({0, -0.717174, 0}, 0.696894)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.380639910697937
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.753997266292572
+
+Timestep: 78
+Current position:	Vector(-8.41631, 0.08283, -4.86768), Quaternion({0, -0.74689, 0}, 0.664948)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.380639910697937
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.753997266292572
+
+Timestep: 79
+Current position:	Vector(-8.41631, 0.08283, -4.86768), Quaternion({0, -0.775183, 0}, 0.631736)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.380639910697937
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.753997266292572
+
+Timestep: 80
+Current position:	Vector(-8.41631, 0.08283, -4.86768), Quaternion({0, -0.802002, 0}, 0.597322)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.380639910697937
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.753997266292572
+
+Timestep: 81
+Current position:	Vector(-8.41631, 0.08283, -4.86768), Quaternion({0, -0.827293, 0}, 0.561771)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.380639910697937
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.753997266292572
+
+Timestep: 82
+Current position:	Vector(-8.41631, 0.08283, -4.86768), Quaternion({0, -0.85101, 0}, 0.52515)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.380639910697937
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.753997266292572
+
+Timestep: 83
+Current position:	Vector(-8.41631, 0.08283, -4.86768), Quaternion({0, -0.873106, 0}, 0.48753)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.380639910697937
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.753997266292572
+
+Timestep: 84
+Current position:	Vector(-8.41631, 0.08283, -4.86768), Quaternion({0, -0.893541, 0}, 0.448981)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.380639910697937
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.753997266292572
+
+Timestep: 85
+Current position:	Vector(-8.41631, 0.08283, -4.86768), Quaternion({0, -0.912275, 0}, 0.409578)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.380639910697937
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.6548486351966858
+
+Timestep: 86
+Current position:	Vector(-8.34158, 0.08283, -4.80123), Quaternion({0, -0.912275, 0}, 0.409578)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.3298534154891968
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.5560051202774048
+
+Timestep: 87
+Current position:	Vector(-8.26685, 0.08283, -4.73478), Quaternion({0, -0.912275, 0}, 0.409578)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.2848554849624634
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.45766445994377136
+
+Timestep: 88
+Current position:	Vector(-8.19212, 0.08283, -4.66833), Quaternion({0, -0.912275, 0}, 0.409578)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.246273398399353
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.45766445994377136
+
+Timestep: 89
+Current position:	Vector(-8.19212, 0.08283, -4.66833), Quaternion({0, -0.929272, 0}, 0.369395)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.246273398399353
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.35849422216415405
+
+Timestep: 90
+Current position:	Vector(-8.12347, 0.08283, -4.59563), Quaternion({0, -0.929272, 0}, 0.369395)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.2085227966308594
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.25996071100234985
+
+Timestep: 91
+Current position:	Vector(-8.05481, 0.08283, -4.52292), Quaternion({0, -0.929272, 0}, 0.369395)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1780736446380615
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.16322140395641327
+
+Timestep: 92
+Current position:	Vector(-7.98616, 0.08283, -4.45021), Quaternion({0, -0.929272, 0}, 0.369395)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1555030345916748
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.16322140395641327
+
+Timestep: 93
+Current position:	Vector(-7.98616, 0.08283, -4.45021), Quaternion({0, -0.944501, 0}, 0.328509)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1555030345916748
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.0700921043753624
+
+Timestep: 94
+Current position:	Vector(-7.9241, 0.08283, -4.37179), Quaternion({0, -0.944501, 0}, 0.328509)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1349259614944458
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.0700921043753624
+
+Timestep: 95
+Current position:	Vector(-7.9241, 0.08283, -4.37179), Quaternion({0, -0.957931, 0}, 0.286998)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1349259614944458
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.05059653893113136
+
+Timestep: 96
+Current position:	Vector(-7.86912, 0.08283, -4.28826), Quaternion({0, -0.957931, 0}, 0.286998)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1166130304336548
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.05059653893113136
+
+Timestep: 97
+Current position:	Vector(-7.86912, 0.08283, -4.28826), Quaternion({0, -0.969538, 0}, 0.24494)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1166130304336548
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.00929254014045
+
+Timestep: 98
+Current position:	Vector(-7.82162, 0.08283, -4.20026), Quaternion({0, -0.969538, 0}, 0.24494)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1008200645446777
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.00929254014045
+
+Timestep: 99
+Current position:	Vector(-7.82162, 0.08283, -4.20026), Quaternion({0, -0.979299, 0}, 0.202417)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1008200645446777
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.00929254014045
+
+Timestep: 100
+Current position:	Vector(-7.82162, 0.08283, -4.20026), Quaternion({0, -0.987197, 0}, 0.159507)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1008200645446777
+Agent action: DiscreteNavigationAction.TURN_RIGHT
+info['ovmm_dist_to_pick_goal']:	0.00929254014045
+
+Timestep: 101
+Current position:	Vector(-7.82162, 0.08283, -4.20026), Quaternion({0, -0.993215, 0}, 0.116294)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.1008200645446777
+Agent action: DiscreteNavigationAction.MOVE_FORWARD
+info['ovmm_dist_to_pick_goal']:	0.016008414328098297
+
+Timestep: 102
+Current position:	Vector(-7.79852, 0.08283, -4.10297), Quaternion({0, -0.993215, 0}, 0.116294)
+Short-term goal:	Vector(-8.44964, 0.84829, -3.71915)
+Distance from short-term goal: 1.0757324695587158
+Agent action: DiscreteNavigationAction.STOP
+Episode finished succesfully
