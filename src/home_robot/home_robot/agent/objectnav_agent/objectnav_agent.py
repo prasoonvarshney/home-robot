@@ -28,7 +28,7 @@ class ObjectNavAgent(Agent):
     """Simple object nav agent based on a 2D semantic map"""
 
     # Flag for debugging data flow and task configuraiton
-    verbose = True
+    verbose = False
 
     def __init__(
         self,

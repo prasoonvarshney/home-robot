@@ -10,6 +10,7 @@ import shutil
 
 import magnum as mn
 from habitat.core.utils import try_cv2_import
+from habitat.sims.habitat_simulator.actions import HabitatSimActions
 from habitat.tasks.nav.shortest_path_follower import ShortestPathFollower
 from habitat.utils.visualizations import maps
 from habitat.utils.visualizations.utils import images_to_video
@@ -52,10 +53,10 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 os.environ["MKL_NUM_THREADS"] = "1"
 
 DISCRETE_ACTION_MAP = {
-    0: DiscreteNavigationAction.STOP,
-    1: DiscreteNavigationAction.MOVE_FORWARD,
-    2: DiscreteNavigationAction.TURN_LEFT,
-    3: DiscreteNavigationAction.TURN_RIGHT,
+    HabitatSimActions.stop: DiscreteNavigationAction.STOP,
+    HabitatSimActions.move_forward: DiscreteNavigationAction.MOVE_FORWARD,
+    HabitatSimActions.turn_left: DiscreteNavigationAction.TURN_LEFT,
+    HabitatSimActions.turn_right: DiscreteNavigationAction.TURN_RIGHT,
 }
 
 
