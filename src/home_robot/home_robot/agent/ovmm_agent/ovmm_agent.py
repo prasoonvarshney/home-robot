@@ -172,7 +172,7 @@ class OpenVocabManipAgent(ObjectNavAgent):
             print(
                 f"Providing oracle environment information to NAV_TO_OBJ agent for episode {episode_id}"
             )
-            object_goal = ovmm_env.habitat_env.env._env.habitat_env.current_episode.candidate_objects[
+            object_goal = ovmm_env.habitat_env.env.env.habitat_env.current_episode.candidate_objects[
                 0
             ]
             object_vp_nav_goal = self.get_position_for_max_iou_viewpoint(object_goal)
@@ -186,7 +186,7 @@ class OpenVocabManipAgent(ObjectNavAgent):
                 goal_coordinates = [object_vp_nav_goal, object_nav_goal]
 
             self.nav_to_obj_agent.set_oracle_info(
-                ovmm_env.habitat_env.env._env,
+                ovmm_env.habitat_env.env.env,
                 goal_coordinates=goal_coordinates,
                 goal_radius=self.config.EXPERIMENT.NAV_TO_OBJ.goal_radius,
             )
@@ -199,15 +199,15 @@ class OpenVocabManipAgent(ObjectNavAgent):
             print(
                 f"Providing oracle environment information to NAV_TO_REC agent for episode {episode_id}"
             )
-            # candidate_goal_receps = ovmm_env.habitat_env.env._env.habitat_env.current_episode.candidate_goal_receps
+            # candidate_goal_receps = ovmm_env.habitat_env.env.env.habitat_env.current_episode.candidate_goal_receps
             # candidate_goal_recep_coords = []
             # for goal_recep in candidate_goal_receps:
             #     candidate_goal_recep_coords.append(mn.Vector3(self.get_position_for_max_iou_viewpoint(goal_recep)))
-            # print(f"Candidate goal position: {ovmm_env.habitat_env.env._env.habitat_env.current_episode.candidate_goal_receps[0].position}")
-            # for vp_idx, vp in enumerate(ovmm_env.habitat_env.env._env.habitat_env.current_episode.candidate_goal_receps[0].view_points):
+            # print(f"Candidate goal position: {ovmm_env.habitat_env.env.env.habitat_env.current_episode.candidate_goal_receps[0].position}")
+            # for vp_idx, vp in enumerate(ovmm_env.habitat_env.env.env.habitat_env.current_episode.candidate_goal_receps[0].view_points):
             #     print(f"Viewpoint {vp_idx}: {vp.agent_state.position}")
             # exit(1)
-            object_goal = ovmm_env.habitat_env.env._env.habitat_env.current_episode.candidate_goal_receps[
+            object_goal = ovmm_env.habitat_env.env.env.habitat_env.current_episode.candidate_goal_receps[
                 0
             ]
             object_vp_nav_goal = self.get_position_for_max_iou_viewpoint(object_goal)
@@ -221,7 +221,7 @@ class OpenVocabManipAgent(ObjectNavAgent):
                 goal_coordinates = [object_vp_nav_goal, object_nav_goal]
 
             self.nav_to_rec_agent.set_oracle_info(
-                ovmm_env.habitat_env.env._env,
+                ovmm_env.habitat_env.env.env,
                 goal_coordinates=goal_coordinates,
                 goal_radius=self.config.EXPERIMENT.NAV_TO_REC.goal_radius,
             )

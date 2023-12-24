@@ -181,7 +181,7 @@ def gen_receptacle_images(
                 )
                 sim.robot.base_pos = start_position
                 sim.robot.base_rot = start_rotation
-                sim.maybe_update_robot()
+                sim.maybe_update_articulated_agent()
                 obs = sim.get_sensor_observations()
                 recep_images.append(obs["robot_head_rgb"][:, :, :3][None])
 

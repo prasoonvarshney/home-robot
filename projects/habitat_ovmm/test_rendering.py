@@ -73,7 +73,7 @@ with habitat.Env(config=config) as env:
     for i in range(args.num_eps):
         observations = env.reset()
 
-        save_image(observations["robot_third_rgb"][:, :, [2, 1, 0]], 0)
+        save_image(observations["third_rgb"][:, :, [2, 1, 0]], 0)
         step = 0
         while not env.episode_over:
             step += 1
@@ -81,4 +81,4 @@ with habitat.Env(config=config) as env:
             print(ac)
 
             observations = env.step(ac)
-            save_image(observations["robot_third_rgb"][:, :, [2, 1, 0]], step)
+            save_image(observations["third_rgb"][:, :, [2, 1, 0]], step)

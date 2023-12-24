@@ -68,11 +68,11 @@ def shortest_path_example(config):
         GymHabitatEnv<HabGymWrapper instance>
     ovmm_env.habitat_env.env
         HabGymWrapper instance
-    ovmm_env.habitat_env.env._env
+    ovmm_env.habitat_env.env.env
         RLTaskEnv instance
-    ovmm_env.habitat_env.env._env._env
+    ovmm_env.habitat_env.env.env._env
         habitat.core.env.Env
-    ovmm_env.habitat_env.env._env._env.sim
+    ovmm_env.habitat_env.env.env._env.sim
         OVMMSim
     """
     ovmm_env = create_ovmm_env_fn(config)
@@ -82,7 +82,7 @@ def shortest_path_example(config):
     goal_radius = max(0.1, getattr(config.habitat.simulator, "forward_step_size", 0.1))
 
     follower = ShortestPathFollower(
-        ovmm_env.habitat_env.env._env.habitat_env.sim, goal_radius, False
+        ovmm_env.habitat_env.env.env.habitat_env.sim, goal_radius, False
     )
 
     for _ in range(ovmm_env.number_of_episodes):
@@ -103,14 +103,14 @@ def shortest_path_example(config):
             images_third_person = []
             steps, max_steps = 0, 1000
             info = None
-            object_pos = ovmm_env.habitat_env.env._env.habitat_env.current_episode.candidate_objects[
+            object_pos = ovmm_env.habitat_env.env.env.habitat_env.current_episode.candidate_objects[
                 0
             ].position
-            goal_pos = ovmm_env.habitat_env.env._env.habitat_env.current_episode.candidate_goal_receps[
+            goal_pos = ovmm_env.habitat_env.env.env.habitat_env.current_episode.candidate_goal_receps[
                 0
             ].position
 
-            goal_pos_viewpoints = ovmm_env.habitat_env.env._env.habitat_env.current_episode.candidate_goal_receps[
+            goal_pos_viewpoints = ovmm_env.habitat_env.env.env.habitat_env.current_episode.candidate_goal_receps[
                 0
             ].view_points
             ious = [viewpoint.iou for viewpoint in goal_pos_viewpoints]
@@ -132,7 +132,7 @@ def shortest_path_example(config):
                 goal_pos_viewpoints[max_iou_idx].agent_state.rotation
             )
             while (
-                not ovmm_env.habitat_env.env._env.habitat_env.episode_over
+                not ovmm_env.habitat_env.env.env.habitat_env.episode_over
                 and steps < max_steps
             ):
                 if steps != 0:

@@ -399,7 +399,6 @@ class OVMMEvaluator(PPOTrainer):
                 observations, done, hab_info = self._env.apply_action(action, info)
                 print(
                     f"Timestep:\t{steps}\t{info['curr_skill']}\t({hab_info['ovmm_dist_to_pick_goal']:.4f},\t{hab_info['ovmm_dist_to_place_goal']:.4f})",
-                    end="\r",
                 )
                 # print(f"Current skill: {info['curr_skill']}")
                 # print(
@@ -515,7 +514,7 @@ class OVMMEvaluator(PPOTrainer):
                 ) as f:
                     json.dump(current_episode_metrics, f, indent=4)
 
-                episode_frames = self._env.habitat_env.env._env._env._task._frames
+                episode_frames = self._env.habitat_env.env.env._env._task._frames
                 if episode_frames is not None and len(episode_frames) > 0:
                     robot_goal_text = build_text_image(
                         episode_frames[0],

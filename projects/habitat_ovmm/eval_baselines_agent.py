@@ -68,6 +68,10 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     if args.ep_start is not None and args.ep_end is not None:
+        if args.ep_start > args.ep_end:
+            raise ValueError(
+                f"Episode start {args.ep_start} must be less than episode end {args.ep_end}"
+            )
         args.overrides.append(
             f'habitat.dataset.episode_ids=[{",".join([str(i) for i in range(args.ep_start, args.ep_end)])}]'
         )
