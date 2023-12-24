@@ -118,6 +118,12 @@ class HeuristicPickPolicy(HeuristicPlacePolicy):
             self.t_relative_grasp = np.inf
             self.t_relative_snap_object = 0
             self.t_start_pick = np.inf
+            self.t_end_pick = np.inf
+            # timesteps relative to the time when PICK finishes
+            self.t_return_arm_lift = 1
+            self.t_return_arm_extension = 2
+            # Enable returning to original position
+            self.delta_lift_return_to_standoff = 0
         else:
             self.grasp_voxel, vis_inputs = found
 
@@ -145,6 +151,12 @@ class HeuristicPickPolicy(HeuristicPlacePolicy):
             self.t_relative_grasp = 2
             self.t_relative_snap_object = 3
             self.t_start_pick = np.inf
+            self.t_end_pick = np.inf
+            # timesteps relative to the time when PICK finishes
+            self.t_return_arm_lift = 1
+            self.t_return_arm_extension = 2
+            # Enable returning to original position
+            self.delta_lift_return_to_standoff = 0
             if self.verbose:
                 print("-" * 20)
 
@@ -164,6 +176,10 @@ class HeuristicPickPolicy(HeuristicPlacePolicy):
         After t_start_pick, the agent moves the arm to the pick point and snaps the object.
         """
         action = None
+
+        if self.verbose:
+            print(f"Current joint positions: {obs.joint}")
+
         if self.timestep == self.t_turn_to_orient:
             # at first turn to face the object and move forward
             action = ContinuousNavigationAction([0, 0, self.orient_turn_angle])
@@ -218,12 +234,14 @@ class HeuristicPickPolicy(HeuristicPlacePolicy):
             delta_arm_ext = (
                 target_extension - current_arm_ext - STRETCH_EXTENSION_OFFSET
             )
+            self.delta_extension_return_to_contracted = -delta_arm_ext
             joints = np.array([delta_arm_ext] + [0] * 9)
             action = ContinuousFullBodyAction(joints)
         elif self.timestep == self.t_start_pick + self.t_relative_grasp:
             grasp_lift = np.min([1.1, self.grasp_voxel[2] + STRETCH_GRASP_DISTANCE])
             current_arm_lift = obs.joint[4]
             delta_arm_lift = grasp_lift - current_arm_lift
+            self.delta_lift_return_to_standoff = -delta_arm_lift
             joints = np.array([0] * 4 + [delta_arm_lift] + [0] * 5)
             action = ContinuousFullBodyAction(joints)
         elif self.timestep == self.t_start_pick + self.t_relative_snap_object:
@@ -231,6 +249,25 @@ class HeuristicPickPolicy(HeuristicPlacePolicy):
             if self.verbose:
                 print("[Pick] Snapping object")
             action = DiscreteNavigationAction.SNAP_OBJECT
+            self.t_end_pick = self.timestep
+        elif self.timestep == self.t_end_pick + self.t_return_arm_lift:
+            # return to the original position
+            joints = np.array([0] * 4 + [self.delta_lift_return_to_standoff] + [0] * 5)
+            self.delta_lift_return_to_standoff = 0
+            if self.verbose:
+                print("[Pick] Returning arm height to grasp height")
+            action = ContinuousFullBodyAction(joints)
+        elif self.timestep == self.t_end_pick + self.t_return_arm_extension:
+            # return to the original position
+            target_extension = RETRACTED_ARM_APPROX_LENGTH
+            current_arm_ext = obs.joint[:4].sum()
+            delta_arm_ext = (
+                target_extension - current_arm_ext - STRETCH_EXTENSION_OFFSET
+            )
+            joints = np.array([delta_arm_ext] + [0] * 9)
+            if self.verbose:
+                print("[Pick] Contracting arm to original position")
+            action = ContinuousFullBodyAction(joints)
         else:
             if self.verbose:
                 print("[Pick] Stopping")
