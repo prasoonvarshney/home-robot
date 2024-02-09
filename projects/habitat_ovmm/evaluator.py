@@ -292,6 +292,40 @@ class OVMMEvaluator(PPOTrainer):
         agent.set_oracle_info(self._env)
         return observations, done, current_episode
 
+    def get_current_step_metrics(self, info, hab_info, observations, done):
+        metrics = extract_scalars_from_info(hab_info)
+        return {
+            "timestep": hab_info["num_steps"],
+            "entry_type": "agent_step",
+            "agent_skill": info["curr_skill"],
+            "agent_action": info["curr_action"],
+            "nav_type": info["nav_type"] if "nav_type" in info else "",
+            # "agent_pos": list(action.cur_articulated_agent.base_pos),
+            # "agent_rot": float(action.cur_articulated_agent.base_rot),
+            # change from numpy float32 to python float so that it's JSON serializable.
+            "curr_nav_goal": [float(x) for x in info["curr_goal"]]
+            if "curr_goal" in info
+            else "",
+            # pick goal metrics
+            "dist_agent_to_pick_goal": metrics["ovmm_dist_to_pick_goal"],
+            "rot_dist_agent_to_pick_goal": metrics["ovmm_rot_dist_to_pick_goal"],
+            "pick_goal_iou_coverage": metrics["pick_goal_iou_coverage"],
+            # place goal metrics
+            "dist_agent_to_place_goal": metrics["ovmm_dist_to_place_goal"],
+            "rot_dist_agent_to_place_goal": metrics["ovmm_rot_dist_to_place_goal"],
+            "dist_object_to_place_goal": metrics[
+                "ovmm_object_to_place_goal_distance.0"
+            ],
+            "place_goal_iou_coverage": metrics["place_goal_iou_coverage"],
+            # collisions
+            "is_navmesh_violated": metrics["navmesh_collision"],
+            # success metrics
+            "find_object_phase_success": metrics["ovmm_find_object_phase_success"],
+            "pick_object_phase_success": metrics["ovmm_pick_object_phase_success"],
+            "find_recep_phase_success": metrics["ovmm_find_recep_phase_success"],
+            "place_object_phase_success": metrics["obj_anywhere_on_goal.0"],
+        }
+
     def local_evaluate(
         self, agent: "Agent", num_episodes: Optional[int] = None
     ) -> Dict[str, float]:
@@ -328,6 +362,7 @@ class OVMMEvaluator(PPOTrainer):
             current_scene_name = current_episode.scene_id.split("/")[-1].split(".")[0]
             current_episode_key = f"{current_scene_name}_{current_episode.episode_id}"
             current_episode_metrics = {}
+            episode_trajectory = []
 
             if skip_computed:
                 computed_episodes = []
@@ -389,26 +424,28 @@ class OVMMEvaluator(PPOTrainer):
                             f"Error {e} loading metrics for {current_episode_key}. Not skipping. Recomputing..."
                         )
 
-            steps, max_steps = -1, 2000
+            step, max_steps = -1, 2000
             max_nav_obj_steps = 800
             start_time = time.time()
 
-            while not done and steps < max_steps:
-                steps += 1
+            while not done and step < max_steps:
+                step += 1
                 action, info, _ = agent.act(observations)
                 observations, done, hab_info = self._env.apply_action(action, info)
                 print(
-                    f"Timestep:\t{steps}\t{info['curr_skill']}\t({hab_info['ovmm_dist_to_pick_goal']:.4f},\t{hab_info['ovmm_dist_to_place_goal']:.4f})",
+                    f"Timestep:\t{step}\t{info['curr_skill']}\t({hab_info['ovmm_dist_to_pick_goal']:.4f},\t{hab_info['ovmm_dist_to_place_goal']:.4f})",
                 )
-                # print(f"Current skill: {info['curr_skill']}")
-                # print(
-                #     f"info['ovmm_dist_to_pick_goal']:\t{hab_info['ovmm_dist_to_pick_goal']:.4f}"
-                # )
-                # print(
-                #     f"info['ovmm_dist_to_keep_goal']:\t{hab_info['ovmm_dist_to_place_goal']:.4f}"
-                # )
+                low_level_task_metrics_for_current_action = (
+                    self._env.habitat_env.env.env._env._task._metrics_at_step
+                )
+                episode_trajectory.append(
+                    self.get_current_step_metrics(info, hab_info, observations, done)
+                )
+                episode_trajectory = (
+                    episode_trajectory + low_level_task_metrics_for_current_action
+                )
 
-                if info["curr_skill"] == "NAV_TO_OBJ" and steps > max_nav_obj_steps:
+                if info["curr_skill"] == "NAV_TO_OBJ" and step > max_nav_obj_steps:
                     print("Nav to obj is taking too long, moving to next episode")
                     break
 
@@ -498,6 +535,14 @@ class OVMMEvaluator(PPOTrainer):
             ):
                 save_down_videos = False
 
+            os.makedirs(target_dir_annotation, exist_ok=True)
+            with open(
+                f"{target_dir_annotation}/{target_file_annotation}_trajectory.jsonl",
+                "w",
+            ) as f:
+                for metrics in episode_trajectory:
+                    f.write(json.dumps(metrics) + "\n")
+
             if save_down_videos:
                 os.makedirs(target_dir_experiment, exist_ok=True)
                 with open(
@@ -508,34 +553,65 @@ class OVMMEvaluator(PPOTrainer):
                 # if frames is not None and len(frames) > 0:
                 #     images_to_video(frames, target_dir_experiment, target_file_experiment, fps=24, quality=5)
 
-                os.makedirs(target_dir_annotation, exist_ok=True)
                 with open(
                     f"{target_dir_annotation}/{target_file_annotation}.json", "w"
                 ) as f:
                     json.dump(current_episode_metrics, f, indent=4)
 
-                episode_frames = self._env.habitat_env.env.env._env._task._frames
-                if episode_frames is not None and len(episode_frames) > 0:
+                annotation_rgb_frames = [
+                    frame["third_rgb"]
+                    for frame in self._env.habitat_env.env.env._env._task._frames
+                ]
+                if annotation_rgb_frames is not None and len(annotation_rgb_frames) > 0:
                     robot_goal_text = build_text_image(
-                        episode_frames[0],
+                        annotation_rgb_frames[0],
                         f"Robot's goal: {current_episode_metrics['goal_name'].replace('_', ' ')}",
                         color="black",
                     )
                     human_goal_text = build_text_image(
-                        episode_frames[0],
+                        annotation_rgb_frames[0],
                         "Your goal: Say the actions the robot is performing in natural language.",
                         color="black",
                     )
-                    episode_frames = [
+                    annotation_rgb_frames = [
                         np.concatenate(
                             (robot_goal_text, frame, human_goal_text), axis=0
                         )
-                        for frame in episode_frames
+                        for frame in annotation_rgb_frames
                     ]
                     images_to_video(
-                        episode_frames,
+                        annotation_rgb_frames,
                         target_dir_annotation,
                         target_file_annotation,
+                        fps=24,
+                        quality=5,
+                    )
+
+                egocentric_rgb_frames = [
+                    frame["head_rgb"]
+                    for frame in self._env.habitat_env.env.env._env._task._frames
+                ]
+                if egocentric_rgb_frames is not None and len(egocentric_rgb_frames) > 0:
+                    images_to_video(
+                        egocentric_rgb_frames,
+                        target_dir_annotation,
+                        target_file_annotation + "_egocentric",
+                        fps=24,
+                        quality=5,
+                    )
+
+                egocentric_depth_frames = [
+                    frame["head_depth"]
+                    for frame in self._env.habitat_env.env.env._env._task._frames
+                ]
+                if (
+                    egocentric_depth_frames is not None
+                    and len(egocentric_depth_frames) > 0
+                ):
+                    images_to_video(
+                        egocentric_depth_frames,
+                        target_dir_annotation,
+                        target_file_annotation + "_egocentric_depth",
                         fps=24,
                         quality=5,
                     )

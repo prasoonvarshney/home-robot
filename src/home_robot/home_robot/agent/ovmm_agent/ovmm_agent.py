@@ -444,6 +444,7 @@ class OpenVocabManipAgent(ObjectNavAgent):
             self.timesteps[0] -= 1  # objectnav agent increments timestep
         info["timestep"] = self.timesteps[0]
         action, terminate = oracle_agent.act(obs, info)
+        info["curr_goal"] = oracle_agent.goal_coordinates[oracle_agent.current_goal]
         return action, info, terminate
 
     def _heuristic_pick(
@@ -508,6 +509,7 @@ class OpenVocabManipAgent(ObjectNavAgent):
         self, obs: Observations, info: Dict[str, Any]
     ) -> Tuple[DiscreteNavigationAction, Any, Optional[Skill]]:
         nav_to_obj_type = self.config.AGENT.SKILLS.NAV_TO_OBJ.type
+        info["nav_type"] = nav_to_obj_type
         if self.skip_skills.nav_to_obj:
             terminate = True
         elif nav_to_obj_type == "heuristic":
@@ -613,6 +615,7 @@ class OpenVocabManipAgent(ObjectNavAgent):
         self, obs: Observations, info: Dict[str, Any]
     ) -> Tuple[DiscreteNavigationAction, Any, Optional[Skill]]:
         nav_to_rec_type = self.config.AGENT.SKILLS.NAV_TO_REC.type
+        info["nav_type"] = nav_to_rec_type
         if self.skip_skills.nav_to_rec:
             terminate = True
         elif nav_to_rec_type == "heuristic":

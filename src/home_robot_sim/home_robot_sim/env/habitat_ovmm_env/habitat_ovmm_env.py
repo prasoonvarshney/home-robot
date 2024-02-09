@@ -344,11 +344,15 @@ class HabitatOpenVocabManipEnv(HabitatEnv):
         action: home_robot.core.interfaces.Action,
         info: Optional[Dict[str, Any]] = None,
     ):
-        if info is not None:
+        if info is not None and "curr_action" not in info:
             if type(action) == ContinuousNavigationAction:
                 info["curr_action"] = str([round(a, 3) for a in action.xyt])
-            if type(action) == DiscreteNavigationAction:
+            elif type(action) == DiscreteNavigationAction:
                 info["curr_action"] = DiscreteNavigationAction(action).name
+            elif type(action) == ContinuousFullBodyAction:
+                info["curr_action"] = "ARM_ACTION"
+            else:
+                info["curr_action"] = ""
             self._process_info(info)
         habitat_action = self._preprocess_action(action, self._last_habitat_obs)
         habitat_obs, _, dones, infos = self.habitat_env.step(habitat_action)

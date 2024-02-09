@@ -164,7 +164,7 @@ class HeuristicPlacePolicy(nn.Module):
         if not goal_rec_mask.any():
             if self.verbose:
                 print("End receptacle not visible.")
-            return None
+            return None, vis_inputs
         else:
             rgb_vis = obs.rgb
             pcd_base_coords = self.get_target_point_cloud_base_coords(
@@ -285,6 +285,7 @@ class HeuristicPlacePolicy(nn.Module):
 
             return best_voxel.cpu().numpy(), vis_inputs
 
+    # flake8: noqa: C901
     def forward(self, obs: Observations, vis_inputs: Optional[Dict] = None):
         """
         1. Get estimate of point on receptacle to place object on.
@@ -306,9 +307,11 @@ class HeuristicPlacePolicy(nn.Module):
         if self.timestep == 0:
             self.du_scale = 1  # TODO: working with full resolution for now
             self.end_receptacle = obs.task_observations["goal_name"].split(" ")[-1]
-            found = self.get_receptacle_placement_point(obs, vis_inputs)
+            self.placement_voxel, vis_inputs = self.get_receptacle_placement_point(
+                obs, vis_inputs
+            )
 
-            if found is None:
+            if self.placement_voxel is None:
                 if self.verbose:
                     print("Receptacle not visible. Execute hardcoded place.")
                 self.total_turn_and_forward_steps = 0
@@ -322,8 +325,6 @@ class HeuristicPlacePolicy(nn.Module):
                 self.t_go_to_place = -1
                 self.t_done_waiting = 5 + self.fall_wait_steps
             else:
-                self.placement_voxel, vis_inputs = found
-
                 center_voxel_trans = np.array(
                     [
                         self.placement_voxel[1],
@@ -364,6 +365,8 @@ class HeuristicPlacePolicy(nn.Module):
                     print(f"Turn to orient for {self.initial_orient_num_turns} steps.")
                     print(f"Move forward for {self.forward_steps} steps.")
 
+        action_description = ""  # only needed for continous actions (discrete actions come with names in the enum)
+
         if self.verbose:
             print("-" * 20)
             print("Timestep", self.timestep)
@@ -383,6 +386,7 @@ class HeuristicPlacePolicy(nn.Module):
         elif self.timestep == self.t_go_to_top:
             # We should move the arm back and retract it to make sure it does not hit anything as it moves towards the target position
             action = self._retract(obs)
+            action_description = "RETRACT_ARM"
         elif self.timestep == self.t_go_to_place:
             if self.verbose:
                 print("[Placement] Move arm into position")
@@ -425,13 +429,16 @@ class HeuristicPlacePolicy(nn.Module):
             )
             joints = self._look_at_ee(joints)
             action = ContinuousFullBodyAction(joints)
+            action_description = "LIFT_EXTEND_ARM"
         elif self.timestep == self.t_release_object:
             # desnap to drop the object
             action = DiscreteNavigationAction.DESNAP_OBJECT
         elif self.timestep == self.t_lift_arm:
             action = self._lift(obs)
+            action_description = "LIFT_ARM"
         elif self.timestep == self.t_retract_arm:
             action = self._retract(obs)
+            action_description = "RETRACT_ARM"
         elif self.timestep == self.t_extend_arm:
             action = DiscreteNavigationAction.EXTEND_ARM
         elif self.timestep <= self.t_done_waiting:
@@ -442,6 +449,9 @@ class HeuristicPlacePolicy(nn.Module):
             if self.verbose:
                 print("[Placement] Stopping")
             action = DiscreteNavigationAction.STOP
+
+        if len(action_description):
+            vis_inputs["curr_action"] = action_description
 
         debug_texts = {
             self.total_turn_and_forward_steps: "[Placement] Aligning camera to arm",
